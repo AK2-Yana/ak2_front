@@ -1,0 +1,73 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.0-M1'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.22'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.9.22'
+}
+
+group = 'ak2.front'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // スターター(関連するclasspathを自動設定)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Spring 関連
+    implementation 'org.springframework.data:spring-data-commons'
+    implementation 'org.springframework.data:spring-data-jpa'
+
+    ///////////////////////////////////////////////////////////////////////
+    // hibernate (DB セクセスの仲介をする。
+    // EntityManager との連携に必須
+    // WHen I applied 60:x.x.x and attached @ID to entity class, Error occurred because of invalid version issue
+    implementation 'io.hypersistence:hypersistence-utils-hibernate-62:3.7.7'
+    implementation 'org.hibernate.orm:hibernate-core:6.6.1.Final'
+
+    // lobmok
+    // @Log や @Data (getter/setter) をサポートしてくれるライブラリ。
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Entity (永続化) 周りの API。
+    // EntityManager や @Entity, @Table @Column @PersistenceContext などサポートしている。
+    implementation 'jakarta.persistence:jakarta.persistence-api'
+    annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+
+    // QueryDSL
+    // SQL を自動生成するのをサポートするライブラリ。@JpaQuery など。
+    // 内部が EE8(javax) パッケージで動作する仕様になっているため、classifier として
+    // jakarta を指定しすることで EE9(jakarta) でアクセスできるようになる。
+    implementation 'com.querydsl:querydsl-core:5.1.0'
+    annotationProcessor 'com.querydsl:querydsl-apt:5.1.0:jakarta'
+    annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+
+    // これも必要 java のクラスを xml で処理可能にするライブラリ
+    // Hibernate/DSL 周りで使用される
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.4'
+
+    implementation 'org.postgresql:postgresql'
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

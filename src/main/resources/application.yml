@@ -1,0 +1,25 @@
+## Setting for server
+server:
+  port: 8085
+## Setting for DB
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:8086/akidb
+    username: akito
+    password: akipass
+    continue-on-error: true
+## Logging
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
