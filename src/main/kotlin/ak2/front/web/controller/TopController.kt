@@ -17,7 +17,6 @@ class TopController(
 
   @GetMapping
   fun getTop(): String {
-    log.info(akUserRepository.findAll().first().userId)
     return "/top/ak-top"
   }
 }

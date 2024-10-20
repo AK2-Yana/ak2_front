@@ -3,6 +3,7 @@ package ak2.front.web.controller
 import ak2.front.common.Ak2Helper
 import ak2.front.common.Ak2ModelAndView
 import ak2.front.domain.service.Ak2UserService
+import ak2.front.service.NewUserService
 import ak2.front.web.dto.UserForm
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/login")
 class LoginController(
   val ak2Helper: Ak2Helper,
-  val ak2UserService: Ak2UserService
+  val ak2UserService: Ak2UserService,
+  val newUserService: NewUserService
 ) {
 
   val log: Logger = LoggerFactory.getLogger(LoginController::class.java)
@@ -35,7 +37,8 @@ class LoginController(
     if (ak2UserService.hasUserInfo(userForm.username)) {
       throw IllegalAccessException()
     }
-
+    val akUser = newUserService.mapToAkUser(userForm)
+    newUserService.registerUser(akUser)
     return ak2Helper.redirectToLoginPage()
   }
 }
