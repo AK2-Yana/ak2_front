@@ -2,7 +2,7 @@ package ak2.front.web.controller
 
 import ak2.front.common.Ak2Helper
 import ak2.front.common.Ak2ModelAndView
-import ak2.front.service.Ak2UserService
+import ak2.front.domain.service.Ak2UserService
 import ak2.front.web.dto.UserForm
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
