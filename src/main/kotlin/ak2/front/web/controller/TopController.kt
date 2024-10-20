@@ -1,6 +1,6 @@
-package ak2.front.controller
+package ak2.front.web.controller
 
-import ak2.front.repositories.AkUserRepository
+import ak2.front.domain.repositories.AkUserRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller

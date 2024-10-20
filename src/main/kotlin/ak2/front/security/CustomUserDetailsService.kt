@@ -1,7 +1,7 @@
-package ak2.front.config
+package ak2.front.security
 
-import ak2.front.entity.AkUser
-import ak2.front.repositories.AkUserRepository
+import ak2.front.domain.entity.AkUser
+import ak2.front.domain.repositories.AkUserRepository
 import jakarta.transaction.Transactional
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

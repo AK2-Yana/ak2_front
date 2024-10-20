@@ -1,4 +1,4 @@
-package ak2.front.config
+package ak2.front.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

@@ -1,6 +1,6 @@
-package ak2.front.config
+package ak2.front.security
 
-import ak2.front.entity.AkUser
+import ak2.front.domain.entity.AkUser
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

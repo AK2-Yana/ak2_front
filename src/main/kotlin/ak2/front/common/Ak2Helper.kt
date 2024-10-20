@@ -5,7 +5,11 @@ import org.springframework.stereotype.Component
 @Component
 class Ak2Helper : CommonPageHelper() {
 
-  fun redirectToTopPage(): Ak2ModelAndView {
-    return super.redirectTOSecurePageWithSeeOther("/ak2/top")
+  fun redirectToTopPage(): String {
+    return super.redirectToSecurePageWithSeeOther("/ak2/top")
+  }
+
+  fun redirectToLoginPage(): String {
+    return super.redirectToSecurePageWithSeeOther("/login")
   }
 }

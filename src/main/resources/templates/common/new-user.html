@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Create new User</title>
 </head>
 <body>
 <h1>Registration of new user</h1>
-<form action="/user/new" method="post">
+<form method="post" action="/login/new" th:action="@{/login/new}">
 	<div>
 		<input type="text" name="username" placeholder="Username"/>
 	</div>

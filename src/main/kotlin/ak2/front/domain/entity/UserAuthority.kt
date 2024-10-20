@@ -1,4 +1,4 @@
-package ak2.front.entity
+package ak2.front.domain.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
