@@ -12,6 +12,11 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         boot:
           allow_jdbc_metadata_access: false
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: null
   datasource:
     url: jdbc:postgresql://127.0.0.1:8086/akidb
     username: akito

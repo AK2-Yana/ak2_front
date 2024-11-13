@@ -1,13 +1,14 @@
 package ak2.front.web.dto
 
-import org.jetbrains.annotations.NotNull
+import ak2.front.domain.annotations.CheckUsername
+import jakarta.validation.constraints.NotEmpty
 import java.io.Serializable
 
 data class UserForm(
 
-  @NotNull
+  @CheckUsername
   val username: String,
 
-  @NotNull
+  @NotEmpty
   var password: String
 ) : Serializable

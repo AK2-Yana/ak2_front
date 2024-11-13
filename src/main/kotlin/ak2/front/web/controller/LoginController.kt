@@ -5,9 +5,10 @@ import ak2.front.common.Ak2ModelAndView
 import ak2.front.domain.service.Ak2UserService
 import ak2.front.service.NewUserService
 import ak2.front.web.dto.UserForm
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import jakarta.servlet.http.HttpSession
 import org.springframework.stereotype.Controller
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 @Controller
@@ -17,26 +18,27 @@ class LoginController(
   val ak2UserService: Ak2UserService,
   val newUserService: NewUserService
 ) {
-
-  val log: Logger = LoggerFactory.getLogger(LoginController::class.java)
-
   @GetMapping
   fun login(): Ak2ModelAndView {
     return Ak2ModelAndView("/common/login")
   }
 
   @GetMapping("/new")
-  fun index(): Ak2ModelAndView {
+  fun index(
+    httpSession: HttpSession
+  ): Ak2ModelAndView {
     return Ak2ModelAndView("/common/new-user")
   }
 
   @PostMapping("/new")
   fun create(
-    @ModelAttribute userForm: UserForm
+    @Validated @ModelAttribute userForm: UserForm,
+    bindingResult: BindingResult
   ): String {
-    if (ak2UserService.hasUserInfo(userForm.username)) {
-      throw IllegalAccessException()
-    }
+    if (bindingResult.hasErrors()) return ak2Helper.redirectToNewUser()
+
+    if (ak2UserService.hasUserInfo(userForm.username)) throw IllegalAccessException()
+
     val akUser = newUserService.mapToAkUser(userForm)
     newUserService.registerUser(akUser)
     return ak2Helper.redirectToLoginPage()

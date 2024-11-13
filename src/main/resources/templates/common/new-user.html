@@ -9,6 +9,7 @@
 <form method="post" action="/login/new" th:action="@{/login/new}">
 	<div>
 		<input type="text" name="username" placeholder="Username"/>
+		<!--		<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>-->
 	</div>
 	<div>
 		<input type="password" name="password" placeholder="Password"/>

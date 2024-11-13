@@ -12,4 +12,8 @@ class Ak2Helper : CommonPageHelper() {
   fun redirectToLoginPage(): String {
     return super.redirectToSecurePageWithSeeOther("/login")
   }
+
+  fun redirectToNewUser(): String {
+    return super.redirectToSecurePageWithSeeOther("/login/new")
+  }
 }
