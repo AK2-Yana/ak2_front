@@ -1,4 +1,4 @@
-package ak2.front.config
+package ak2.front.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,12 +20,12 @@ class SecurityConfig(
   @Bean
   fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
     http.authorizeHttpRequests {
-      it.requestMatchers("/login").permitAll()
+      it.requestMatchers("/login/**").permitAll()
         .anyRequest().authenticated()
     }.formLogin { form ->
       form
         .loginPage("/login")
-        .defaultSuccessUrl("/ak2/front/sample", true)
+        .defaultSuccessUrl("/ak2/top", true)
         .permitAll()
     }.userDetailsService(customUserDetailsService)
     return http.build()

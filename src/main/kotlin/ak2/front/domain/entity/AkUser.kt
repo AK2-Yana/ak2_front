@@ -1,5 +1,6 @@
-package ak2.front.entity
+package ak2.front.domain.entity
 
+import ak2.front.domain.constraint.UserConstants.ACTIVE_USER
 import jakarta.persistence.*
 import java.io.Serializable
 
@@ -12,7 +13,7 @@ data class AkUser(
 
   val password: String = "",
 
-  val enabled: String = "Y",
+  val enabled: String = ACTIVE_USER,
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(

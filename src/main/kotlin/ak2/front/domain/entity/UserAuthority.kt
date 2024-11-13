@@ -1,4 +1,4 @@
-package ak2.front.entity
+package ak2.front.domain.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -9,7 +9,7 @@ import java.io.Serializable
 @Table(name = "authorities")
 data class UserAuthority(
   @Id
-  val id: Int = 0,
+  val id: Int = 2,
 
-  val name: String = "" // 例えば "ADMIN", "USER" などのロール名
+  val name: String = "BASIC"
 ) : Serializable

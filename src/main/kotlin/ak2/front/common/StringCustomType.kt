@@ -7,7 +7,7 @@ import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.Types
 
-// NOTE: This class does not use but let me retain this for study
+@Deprecated("This class does not use but let me retain this for study")
 class StringCustomType : UserType<java.lang.String> {
 
   override fun equals(x: java.lang.String?, y: java.lang.String?): Boolean {
